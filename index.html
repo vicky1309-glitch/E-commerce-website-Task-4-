@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberSale - Cyberpunk Gaming E-Commerce Store</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icons for Cyberpunk Tech Feel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <!-- Top info bar -->
+    <div class="top-bar container">
+      <div class="top-bar-left">
+        <div class="top-bar-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Location: <span class="highlight">Mumbai, India</span></span>
+        </div>
+        <div class="top-bar-item">
+          <i class="fa-solid fa-bolt"></i>
+          <span>System Online</span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="top-bar-item">
+          <i class="fa-solid fa-user-shield"></i>
+          <span>Security: <span class="highlight">Encrypted SSL</span></span>
+        </div>
+        <div class="top-bar-item" id="topNavUserStatus">
+          <i class="fa-solid fa-circle-user"></i>
+          <span>Signed in: <span class="highlight" id="topNavUsername">Rich Psycho</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Nav -->
+    <div class="nav-main container">
+      <!-- Logo -->
+      <a href="#" class="logo" id="navLogoBtn">
+        <div class="logo-icon-container">
+          <img src="images/logo.png" alt="CyberSale logo" class="logo-icon-img">
+        </div>
+        <div class="logo-text">
+          CYBER
+          <span>SALE</span>
+        </div>
+      </a>
+
+      <!-- Live Search Box -->
+      <div class="search-container">
+        <select class="search-select" id="searchCategory">
+          <option value="all">All Categories</option>
+          <option value="pc">Gaming PC</option>
+          <option value="laptops">Laptops</option>
+          <option value="handhelds">Handhelds</option>
+          <option value="monitors">Monitors</option>
+          <option value="projectors">Projectors</option>
+          <option value="sound">Sound</option>
+          <option value="accessories">Accessories</option>
+          <option value="networking">Networking</option>
+          <option value="chairs">Gaming Chairs</option>
+          <option value="emobility">eMobility</option>
+        </select>
+        <input type="text" class="search-input" id="searchQuery" placeholder="Search futuristic hardware...">
+        <button class="search-btn" id="searchBtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <!-- Quick Actions (Cart / Wishlist / Profile) -->
+      <div class="nav-actions">
+        <button class="nav-action-btn" id="wishlistToggleBtn" title="Wishlist">
+          <i class="fa-solid fa-heart"></i>
+          <span class="nav-action-counter" id="wishlistCount">0</span>
+        </button>
+        <button class="nav-action-btn" id="cartToggleBtn" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="nav-action-counter" id="cartCount">0</span>
+        </button>
+        <button class="nav-action-btn" id="profileNavBtn" title="Profile Dashboard">
+          <i class="fa-solid fa-skull"></i>
+        </button>
+        <button class="hamburger-menu" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Secondary Links Bar -->
+    <div class="nav-links-bar container">
+      <ul class="nav-links">
+        <li class="nav-link active" data-view="home"><a href="#">Home</a></li>
+        <li class="nav-link" data-view="home" data-filter="pc"><a href="#">Gaming PC</a></li>
+        <li class="nav-link" data-view="home" data-filter="laptops"><a href="#">Laptops</a></li>
+        <li class="nav-link" data-view="home" data-filter="sound"><a href="#">Sound</a></li>
+        <li class="nav-link" data-view="home" data-filter="accessories"><a href="#">Accessories</a></li>
+        <li class="nav-link special" data-view="home" data-promo="sale"><a href="#">Super Sale</a></li>
+        <li class="nav-link" data-view="admin"><a href="#"><i class="fa-solid fa-sliders-h"></i> Admin Panel</a></li>
+      </ul>
+      <div class="contact-support">
+        <i class="fa-solid fa-headset"></i> Support: +91 9940315366
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       1. HOME VIEW (MAIN INTERFACE)
+       ========================================== -->
+  <main class="main-view active container" id="homeView">
+    <!-- Hero promo slider and sidebar grid -->
+    <section class="hero-section">
+      <!-- Image slider -->
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200');">
+          <div class="slide-content">
+            <span class="slide-title-tag">RICHARD PSYCHO SALE</span>
+            <h2 class="slide-title">UPTO <span>55% OFF</span></h2>
+            <p class="slide-desc">Gear up with elite, liquid-cooled laptops and prebuild custom stations. High frame rate dominance guaranteed.</p>
+            <button class="cta-btn shop-now-cta">SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></button>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1200');">
+          <div class="slide-content">
+            <span class="slide-title-tag">RTX 50-SERIES DROP</span>
+            <h2 class="slide-title slide-title-cyan">NEXT-GEN <span>GPU LIVE</span></h2>
+            <p class="slide-desc">Level up with pure AI frame generation and custom vector vapor cooling block designs.</p>
+            <button class="cta-btn cyan shop-now-cta">ACQUIRE NOW <i class="fa-solid fa-bolt"></i></button>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=1200');">
+          <div class="slide-content">
+            <span class="slide-title-tag">FLASH SALE LIVE</span>
+            <h2 class="slide-title">CYBERPUNK <span>ACCESSORIES</span></h2>
+            <p class="slide-desc">Hot-swappable tactile RGB boards, 4000Hz polling mice, and dual-zone neon desk setups.</p>
+            <button class="cta-btn shop-now-cta">VIEW DEALS <i class="fa-solid fa-percent"></i></button>
+          </div>
+        </div>
+
+        <div class="slider-dots">
+          <div class="slider-dot active" data-index="0"></div>
+          <div class="slider-dot" data-index="1"></div>
+          <div class="slider-dot" data-index="2"></div>
+        </div>
+      </div>
+
+      <!-- Right promo grids -->
+      <div class="hero-promo-sidebar">
+        <!-- Card 1 -->
+        <div class="promo-card" style="background-image: url('https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=500');">
+          <div class="promo-card-content">
+            <span class="promo-badge">Up to 1TB SSD & 16GB VRAM</span>
+            <h3 class="promo-title">Sound Accessories</h3>
+            <p class="promo-desc">Haptic spatial feedback headsets & 3D soundscapes.</p>
+          </div>
+          <div class="promo-action shop-now-cta">SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></div>
+        </div>
+        <!-- Card 2 -->
+        <div class="promo-card" style="background-image: url('https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=500');">
+          <div class="promo-card-content">
+            <span class="promo-badge">Tactile mechanical boards</span>
+            <h3 class="promo-title">Desk Setup</h3>
+            <p class="promo-desc">Custom coiled cables & multi-zone optical switches.</p>
+          </div>
+          <div class="promo-action shop-now-cta">SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust benefits panel -->
+    <section class="benefits-bar">
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="benefit-info">
+          <h4>Free Delivery</h4>
+          <p>Save 20% per product shipping</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="benefit-info">
+          <h4>Secure Payment</h4>
+          <p>100% Secure Gateways Only</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="benefit-info">
+          <h4>Money Guarantee</h4>
+          <p>30 Days replacement cover</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="benefit-info">
+          <h4>24/7 Support</h4>
+          <p>Live cyber technical agents</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Categories Header -->
+    <section class="section-header">
+      <h3 class="section-title">Featured Categories</h3>
+      <div class="carousel-controls">
+        <button class="carousel-control-btn" id="catPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel-control-btn" id="catNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- Categories List Strip -->
+    <section class="categories-grid" id="categoriesGrid">
+      <!-- Card New Products (pseudo-category: filters by newArrival flag) -->
+      <div class="category-card" data-category="new-arrivals">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h4 class="category-name">New Products</h4>
+        <p class="category-count" id="count-new-arrivals">0 Products</p>
+      </div>
+      <!-- Card laptops -->
+      <div class="category-card" data-category="laptops">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+        <h4 class="category-name">Laptops</h4>
+        <p class="category-count" id="count-laptops">0 Products</p>
+      </div>
+      <!-- Card Desktops -->
+      <div class="category-card" data-category="pc">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-computer"></i></div>
+        <h4 class="category-name">Gaming PC</h4>
+        <p class="category-count" id="count-pc">0 Products</p>
+      </div>
+      <!-- Card Handhelds -->
+      <div class="category-card" data-category="handhelds">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-gamepad"></i></div>
+        <h4 class="category-name">Handhelds</h4>
+        <p class="category-count" id="count-handhelds">0 Products</p>
+      </div>
+      <!-- Card Monitors -->
+      <div class="category-card" data-category="monitors">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-desktop"></i></div>
+        <h4 class="category-name">Monitors</h4>
+        <p class="category-count" id="count-monitors">0 Products</p>
+      </div>
+      <!-- Card Projectors -->
+      <div class="category-card" data-category="projectors">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-photo-film"></i></div>
+        <h4 class="category-name">Projectors</h4>
+        <p class="category-count" id="count-projectors">0 Products</p>
+      </div>
+      <!-- Card accessories -->
+      <div class="category-card" data-category="accessories">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-keyboard"></i></div>
+        <h4 class="category-name">Accessories</h4>
+        <p class="category-count" id="count-accessories">0 Products</p>
+      </div>
+      <!-- Card sound -->
+      <div class="category-card" data-category="sound">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-headphones"></i></div>
+        <h4 class="category-name">Sound</h4>
+        <p class="category-count" id="count-sound">0 Products</p>
+      </div>
+      <!-- Card Networking -->
+      <div class="category-card" data-category="networking">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-wifi"></i></div>
+        <h4 class="category-name">Networking</h4>
+        <p class="category-count" id="count-networking">0 Products</p>
+      </div>
+      <!-- Card chairs -->
+      <div class="category-card" data-category="chairs">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-chair"></i></div>
+        <h4 class="category-name">Gaming Chairs</h4>
+        <p class="category-count" id="count-chairs">0 Products</p>
+      </div>
+      <!-- Card eMobility -->
+      <div class="category-card" data-category="emobility">
+        <div class="category-icon-wrapper"><i class="fa-solid fa-bicycle"></i></div>
+        <h4 class="category-name">eMobility</h4>
+        <p class="category-count" id="count-emobility">0 Products</p>
+      </div>
+    </section>
+
+    <!-- Products grid layout + sidebar filters -->
+    <section class="shop-section">
+      <!-- Left sidebar filters -->
+      <aside class="filters-sidebar">
+        <div class="filter-block">
+          <h4 class="filter-title">Filters <i class="fa-solid fa-filter"></i></h4>
+          <ul class="filter-list">
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="pc">
+                <span>Gaming PC</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="laptops">
+                <span>Laptops</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="handhelds">
+                <span>Handhelds</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="monitors">
+                <span>Monitors</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="projectors">
+                <span>Projectors</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="sound">
+                <span>Sound</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="accessories">
+                <span>Accessories</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="networking">
+                <span>Networking</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="chairs">
+                <span>Gaming Chairs</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" class="filter-checkbox category-filter-check" value="emobility">
+                <span>eMobility</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter-block">
+          <h4 class="filter-title">Price Range</h4>
+          <div class="price-slider-container">
+            <input type="range" class="price-range-slider" id="priceRange" min="1000" max="300000" step="5000" value="300000">
+            <div class="price-display">
+              <span>Min: ₹1,000</span>
+              <span id="priceMaxLabel">Max: ₹3,00,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <h4 class="filter-title">Sort By</h4>
+          <select class="sort-select" id="sortSelect">
+            <option value="popular">Popular / High Rating</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+            <option value="new">Newest Arrivals</option>
+          </select>
+        </div>
+
+        <button class="clear-filters-btn" id="clearFiltersBtn">RESET FILTERS</button>
+      </aside>
+
+      <!-- Right product container -->
+      <div class="products-container">
+        <!-- Products header stats -->
+        <div class="products-header">
+          <div class="products-count">
+            Showing <span id="displayedProductsCount">0</span> of <span id="totalProductsCount">0</span> Items
+          </div>
+          <div class="active-category-indicator" id="activeCategoryIndicator" style="font-weight: 600; color: var(--neon-pink);">
+            All Hardware
+          </div>
+        </div>
+
+        <!-- Products grid -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Dynamically generated product cards will insert here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       2. CHECKOUT VIEW
+       ========================================== -->
+  <main class="main-view container" id="checkoutView">
+    <div class="section-header" style="margin-top: 1.5rem;">
+      <h3 class="section-title">Secure Checkout</h3>
+      <button class="cta-btn cyan" id="backToShopBtn"><i class="fa-solid fa-arrow-left-long"></i> BACK TO SHOP</button>
+    </div>
+
+    <div class="checkout-layout">
+      <!-- Shipping Details Panel -->
+      <div class="checkout-panel">
+        <h4 class="checkout-subtitle">Shipping & Gamer ID Info</h4>
+        <form id="checkoutForm" onsubmit="event.preventDefault();">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="shippingName" placeholder="Viknesh V" required value="Viknesh V">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gamer Phone</label>
+              <input type="tel" class="form-input" id="shippingPhone" placeholder="+91 9940315366" required value="+91 9940315366">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Terminal Email Address</label>
+              <input type="email" class="form-input" id="shippingEmail" placeholder="v.viknesh1309@gmail.com" required value="v.viknesh1309@gmail.com">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Physical Shipping Grid (Address)</label>
+              <input type="text" class="form-input" id="shippingAddress" placeholder="Sector 7, Neo-Mumbai Cyber-Hills" required value="Sector 7, Neo-Mumbai Cyber-Hills">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Net City</label>
+              <input type="text" class="form-input" id="shippingCity" placeholder="Mumbai" required value="Mumbai">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Postal Grid Code (PIN)</label>
+              <input type="text" class="form-input" id="shippingZip" placeholder="400001" required value="400001">
+            </div>
+          </div>
+
+          <h4 class="checkout-subtitle">Payment Core Interface</h4>
+          <!-- Payment Options selector tab -->
+          <div class="payment-selector">
+            <div class="payment-option-btn active" data-method="upi">
+              <i class="fa-solid fa-qrcode"></i>
+              <span>UPI Node</span>
+            </div>
+            <div class="payment-option-btn" data-method="card">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Credit Card</span>
+            </div>
+            <div class="payment-option-btn" data-method="cod">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+              <span>Credits (COD)</span>
+            </div>
+          </div>
+
+          <!-- Dynamic payment configurations -->
+          <div id="paymentInputsContainer">
+            <!-- UPI Details View (Default) -->
+            <div class="upi-details-container" id="paymentUpiDiv">
+              <div class="upi-qr-glow">
+                <!-- Glowing UPI QR code -->
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <!-- Custom futuristic QR Code placeholder -->
+                  <rect x="10" y="10" width="25" height="25" fill="#0c0714" stroke="#ff0055" stroke-width="2"/>
+                  <rect x="15" y="15" width="15" height="15" fill="#ff0055"/>
+                  <rect x="65" y="10" width="25" height="25" fill="#0c0714" stroke="#ff0055" stroke-width="2"/>
+                  <rect x="70" y="15" width="15" height="15" fill="#ff0055"/>
+                  <rect x="10" y="65" width="25" height="25" fill="#0c0714" stroke="#ff0055" stroke-width="2"/>
+                  <rect x="15" y="70" width="15" height="15" fill="#ff0055"/>
+                  <!-- QR noise -->
+                  <rect x="45" y="20" width="10" height="10" fill="#00f3ff"/>
+                  <rect x="40" y="45" width="15" height="15" fill="#ff0055"/>
+                  <rect x="20" y="45" width="10" height="10" fill="#00f3ff"/>
+                  <rect x="75" y="45" width="10" height="20" fill="#ffb703"/>
+                  <rect x="45" y="75" width="20" height="10" fill="#00f3ff"/>
+                </svg>
+              </div>
+              <p class="upi-instruction">Scan this secure node with your UPI Client App (GPAY, BHIM, PHONEPE)</p>
+              <div class="form-group" style="width: 100%; max-width: 320px;">
+                <label class="form-label">Or enter VPA ID</label>
+                <input type="text" class="form-input" id="upiVpa" placeholder="viknesh@okaxis" value="viknesh@okaxis">
+              </div>
+            </div>
+
+            <!-- Card details (Hidden initially) -->
+            <div class="card-details-container" id="paymentCardDiv" style="display: none;">
+              <!-- Flipping credit card visual -->
+              <div class="credit-card-wrapper">
+                <div class="interactive-card" id="creditCardGraphic">
+                  <!-- Front Side -->
+                  <div class="card-front">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <div class="card-chip"></div>
+                      <div class="card-glow-logo">CYBER-CARD</div>
+                    </div>
+                    <div class="card-number-display" id="cardGraphicNum">•••• •••• •••• ••••</div>
+                    <div class="card-footer">
+                      <div>
+                        <div class="card-label-small">Card Holder</div>
+                        <div class="card-value-display" id="cardGraphicName">VIKNESH V</div>
+                      </div>
+                      <div>
+                        <div class="card-label-small">Expiry</div>
+                        <div class="card-value-display" id="cardGraphicExpiry">12/30</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Back Side -->
+                  <div class="card-back">
+                    <div class="card-black-stripe"></div>
+                    <div>
+                      <div class="card-label-small" style="text-align: right; margin-right: 1.2rem;">CVV Code</div>
+                      <div class="card-signature-area">
+                        <span class="card-cvv-display" id="cardGraphicCvv">•••</span>
+                      </div>
+                    </div>
+                    <div style="font-family: var(--font-display); font-size: 0.6rem; color: var(--text-muted); text-align: center;">
+                      CYBERSALE SECURITY ENCRYPTED CARD NODE
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card form inputs -->
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label class="form-label">Card Holder Name</label>
+                  <input type="text" class="form-input" id="cardNameInput" placeholder="VIKNESH V">
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label">Card Number</label>
+                  <input type="text" class="form-input" id="cardNumInput" placeholder="4321 8765 9012 3456" maxlength="19">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Expiration Date</label>
+                  <input type="text" class="form-input" id="cardExpiryInput" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">CVV Block</label>
+                  <input type="password" class="form-input" id="cardCvvInput" placeholder="•••" maxlength="3">
+                </div>
+              </div>
+            </div>
+
+            <!-- COD details (Hidden initially) -->
+            <div class="cod-details-container" id="paymentCodDiv" style="display: none; text-align: center; padding: 2rem;">
+              <i class="fa-solid fa-handshake" style="font-size: 3rem; color: var(--neon-yellow); margin-bottom: 1rem;"></i>
+              <p style="color: var(--text-muted); font-size: 1rem;">Verify order with mobile passcode upon delivery. Credit cost remains stable.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Cart totals review -->
+      <div class="checkout-panel" style="align-self: start;">
+        <h4 class="checkout-subtitle">Checkout Grid Review</h4>
+        <div id="checkoutSummaryItems" style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
+          <!-- Dynamically loaded list of purchases -->
+        </div>
+
+        <div style="border-top: 1px solid rgba(157, 78, 221, 0.1); padding-top: 1rem;">
+          <div class="calc-row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">₹0</span>
+          </div>
+          <div class="calc-row">
+            <span>Cyber Tax / GST (18%)</span>
+            <span id="checkoutTax">₹0</span>
+          </div>
+          <div class="calc-row total">
+            <span>Total Cost</span>
+            <span id="checkoutTotal">₹0</span>
+          </div>
+        </div>
+
+        <button class="sidebar-cta-btn" id="placeOrderBtn" style="margin-top: 1.5rem; font-size: 1.1rem; height: 50px;">
+          AUTHORIZE PURCHASE <i class="fa-solid fa-lock"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       3. USER PROFILE / LOGGED IN VIEW
+       ========================================== -->
+  <main class="main-view container" id="userView">
+    <div class="section-header" style="margin-top: 1.5rem;">
+      <h3 class="section-title">User Core Dashboard</h3>
+    </div>
+
+    <!-- Logged in state -->
+    <div class="user-profile-layout" id="userProfileDiv">
+      <div class="profile-card">
+        <div class="profile-avatar-container">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200" alt="Gamer Avatar" class="profile-avatar-img">
+          <span class="profile-level-badge">LVL 82</span>
+        </div>
+        <h3 class="profile-name">Rich Psycho</h3>
+        <p class="profile-email">v.viknesh1309@gmail.com</p>
+
+        <div class="profile-stat-bar">
+          <div class="profile-stat-item">
+            <div class="profile-stat-val">₹3,45,990</div>
+            <div class="profile-stat-lbl">Spent</div>
+          </div>
+          <div class="profile-stat-item">
+            <div class="profile-stat-val" id="profileOrdersCount">4</div>
+            <div class="profile-stat-lbl">Orders</div>
+          </div>
+        </div>
+
+        <button class="logout-btn" id="logoutBtn">DE-AUTHORIZE USER</button>
+      </div>
+
+      <!-- Orders history panel -->
+      <div class="checkout-panel">
+        <h4 class="checkout-subtitle">Active Sub-Terminal Transmissions (Orders)</h4>
+        <div class="admin-table-container">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Purchased Items</th>
+                <th>Total Credits</th>
+                <th>Node Status</th>
+              </tr>
+            </thead>
+            <tbody id="userOrdersTableBody">
+              <!-- Custom mock data rows added dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logged out / login form state -->
+    <div class="login-container" id="loginFormDiv" style="display: none;">
+      <h3 class="login-title">LOGIN <span>TERMINAL</span></h3>
+      <form id="gamerLoginForm" onsubmit="event.preventDefault();">
+        <div class="form-group" style="margin-bottom: 1.2rem;">
+          <label class="form-label">USER HANDLE OR EMAIL</label>
+          <input type="text" class="form-input" id="loginUsername" placeholder="Rich Psycho" required value="Rich Psycho">
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label">DECRYPTING ACCESS KEY (PASSWORD)</label>
+          <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" required value="12345678">
+        </div>
+        <button class="sidebar-cta-btn" id="submitLoginBtn" style="font-size: 1rem;">ESTABLISH CONNECT LINK</button>
+      </form>
+      <div class="login-footer-links">
+        Need secure clearance? <a href="#" id="signupToggleBtn">Request credentials</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       4. ADMIN PANEL VIEW
+       ========================================== -->
+  <main class="main-view container" id="adminView">
+    <div class="section-header" style="margin-top: 1.5rem;">
+      <h3 class="section-title">Shop Control Terminal</h3>
+    </div>
+
+    <!-- Admin dashboard metrics -->
+    <div class="admin-stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-details">
+          <h3>Total Sales</h3>
+          <div class="stat-card-val">₹14,84,950</div>
+        </div>
+        <div class="stat-card-icon"><i class="fa-solid fa-chart-line"></i></div>
+      </div>
+      <div class="stat-card stat-card-cyan">
+        <div class="stat-card-details">
+          <h3>Deployments (Orders)</h3>
+          <div class="stat-card-val" id="adminTotalOrdersVal">148</div>
+        </div>
+        <div class="stat-card-icon"><i class="fa-solid fa-dolly"></i></div>
+      </div>
+      <div class="stat-card stat-card-green">
+        <div class="stat-card-details">
+          <h3>Network Nodes (Users)</h3>
+          <div class="stat-card-val">2,410</div>
+        </div>
+        <div class="stat-card-icon"><i class="fa-solid fa-users"></i></div>
+      </div>
+    </div>
+
+    <!-- Add Product and Product List layouts -->
+    <div class="admin-layout-columns">
+      <!-- Input Panel -->
+      <div class="admin-card">
+        <h4 class="checkout-subtitle" id="adminFormTitle">Inject New Hardware Model</h4>
+        <form id="adminProductForm" onsubmit="event.preventDefault();">
+          <input type="hidden" id="adminProductId">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label">Hardware Name</label>
+            <input type="text" class="form-input" id="adminProdName" placeholder="Predator Hyper-Core CPU" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label">Category Node</label>
+            <select class="form-input" id="adminProdCategory" required>
+              <option value="pc">Gaming PC</option>
+              <option value="laptops">Laptops</option>
+              <option value="handhelds">Handhelds</option>
+              <option value="monitors">Monitors</option>
+              <option value="projectors">Projectors</option>
+              <option value="sound">Sound</option>
+              <option value="accessories">Accessories</option>
+              <option value="networking">Networking</option>
+              <option value="chairs">Gaming Chairs</option>
+              <option value="emobility">eMobility</option>
+            </select>
+          </div>
+          <div class="form-grid" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Price Node (₹)</label>
+              <input type="number" class="form-input" id="adminProdPrice" placeholder="18500" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Rating Metric</label>
+              <input type="number" class="form-input" id="adminProdRating" min="1" max="5" step="0.1" value="4.5" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label">Visual Frame URL (Image)</label>
+            <input type="text" class="form-input" id="adminProdImage" placeholder="https://images.unsplash.com/photo-..." value="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600">
+          </div>
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label">Specifications (Format: SpecName:SpecValue; separate pairs with ;)</label>
+            <textarea class="form-input" id="adminProdSpecs" placeholder="Processor:Intel i9; Graphics:RTX 4080, 12GB VRAM" style="height: 80px; resize: none;"></textarea>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <button class="sidebar-cta-btn" id="adminFormSubmitBtn" style="margin-top: 0;">INJECT NODE</button>
+            <button class="sidebar-cta-btn secondary" id="adminFormCancelBtn" style="margin-top: 0; display: none;">CANCEL</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Current Database List -->
+      <div class="admin-card">
+        <h4 class="checkout-subtitle">Active Inventory Database</h4>
+        <div class="admin-table-container">
+          <table class="admin-products-table">
+            <thead>
+              <tr>
+                <th>Hardware</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Ops</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductsTableBody">
+              <!-- Dynamically render rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       SIDEBAR INTERFACES
+       ========================================== -->
+  <!-- Cart Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Cart slide drawer -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title"><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</div>
+      <button class="sidebar-close-btn" id="cartCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="sidebar-items-list" id="cartItemsList">
+      <!-- Items will load here -->
+    </div>
+    <div class="sidebar-footer">
+      <div class="calc-row">
+        <span>Cart Items Subtotal</span>
+        <span id="cartSubtotalVal">₹0</span>
+      </div>
+      <div class="calc-row">
+        <span>Gamer Tax / GST (18%)</span>
+        <span id="cartTaxVal">₹0</span>
+      </div>
+      <div class="calc-row total">
+        <span>Grand Total</span>
+        <span id="cartTotalVal">₹0</span>
+      </div>
+      <button class="sidebar-cta-btn" id="checkoutBtn">LAUNCH SECURE CHECKOUT</button>
+    </div>
+  </div>
+
+  <!-- Wishlist slide drawer -->
+  <div class="wishlist-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title"><i class="fa-solid fa-heart"></i> Player Wishlist</div>
+      <button class="sidebar-close-btn" id="wishlistCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="sidebar-items-list" id="wishlistItemsList">
+      <!-- Wishlist items load here -->
+    </div>
+    <div class="sidebar-footer" style="padding: 1.5rem 1.5rem 2.5rem;">
+      <button class="sidebar-cta-btn secondary" id="clearWishlistBtn">RESET WISHLIST NODE</button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: PRODUCT SPECIFICATIONS & DETAILS
+       ========================================== -->
+  <div class="modal-overlay" id="productDetailModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="product-detail-layout" id="modalProductContent">
+        <!-- Render detail layout inside -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: ORDER SUCCESS POPUP
+       ========================================== -->
+  <div class="order-confirm-overlay" id="orderConfirmModal">
+    <div class="confirm-box">
+      <div class="confirm-icon-glow">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="confirm-title">TRANSACTION AUTHORIZED</h3>
+      <p class="confirm-desc">Your order node has been successfully written to the blockchain pipeline. Delivery drone coordinates dispatched.</p>
+      <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+        <button class="sidebar-cta-btn" id="confirmCloseBtn">RETURN TO PORTAL</button>
+        <button class="sidebar-cta-btn secondary" id="confirmGoOrdersBtn">VIEW ACTIVE TRANSMISSIONS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER SECTION
+       ========================================== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col" style="grid-column: span 1;">
+        <!-- Logo -->
+        <a href="#" class="logo" style="margin-bottom: 1.2rem;">
+          <div class="logo-icon-container">
+            <img src="images/logo.png" alt="CyberSale logo" class="logo-icon-img">
+          </div>
+          <div class="logo-text">
+            CYBER
+            <span>SALE</span>
+          </div>
+        </a>
+        <p class="footer-desc">Premium cyberpunk hardware, custom-built servers, liquid cooling configurations, and next-gen gaming peripherals. Experience latency-free gaming dominance.</p>
+        <div class="social-links">
+          <a href="#" class="social-link-btn"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="social-link-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-link-btn"><i class="fa-brands fa-steam"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>SHOPPING CORE</h4>
+        <ul class="footer-links-list">
+          <li><a href="#" data-filter="pc" class="footer-nav-link">Gaming PCs</a></li>
+          <li><a href="#" data-filter="laptops" class="footer-nav-link">Laptops</a></li>
+          <li><a href="#" data-filter="handhelds" class="footer-nav-link">Handhelds</a></li>
+          <li><a href="#" data-filter="monitors" class="footer-nav-link">Monitors</a></li>
+          <li><a href="#" data-filter="projectors" class="footer-nav-link">Projectors</a></li>
+          <li><a href="#" data-filter="accessories" class="footer-nav-link">Accessories</a></li>
+          <li><a href="#" data-filter="sound" class="footer-nav-link">Sound Systems</a></li>
+          <li><a href="#" data-filter="networking" class="footer-nav-link">Networking</a></li>
+          <li><a href="#" data-filter="chairs" class="footer-nav-link">Chairs</a></li>
+          <li><a href="#" data-filter="emobility" class="footer-nav-link">eMobility</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>INFORMATION</h4>
+        <ul class="footer-links-list">
+          <li><a href="#">About CyberSale Node</a></li>
+          <li><a href="#">Custom Build Config</a></li>
+          <li><a href="#">Security Protocols</a></li>
+          <li><a href="#">Secure Payments</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>NEURAL CORE</h4>
+        <ul class="footer-links-list">
+          <li><a href="#">Viknesh V</a></li>
+          <li><a href="mailto:v.viknesh1309@gmail.com">v.viknesh1309@gmail.com</a></li>
+          <li><a href="tel:+919940315366">+91 9940315366</a></li>
+          <li><a href="#">Neo-Mumbai Grid 01</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright and compliance -->
+    <div class="container footer-bottom">
+      <div>&copy; 2026 CyberSale. All transmissions encrypted. Built for gaming dominance.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Protocol</a>
+        <a href="#">Terms of License</a>
+        <a href="#">System Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
